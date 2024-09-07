@@ -17,6 +17,7 @@ namespace Zulu.Api.Data
         public DbSet<Country> Countries { get; set; }
 
         //para que no vea duplicado
+        //override OnModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

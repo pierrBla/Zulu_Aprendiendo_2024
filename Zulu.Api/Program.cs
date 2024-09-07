@@ -8,6 +8,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=cn"));
 
 var app = builder.Build();
