@@ -68,7 +68,7 @@ namespace Zulu.Web.Repositories
         {
             var messageJSON = JsonSerializer.Serialize(model);
             var messageContet = new StringContent(messageJSON, Encoding.UTF8, "application/json");
-            var responseHttp = await _httpClient.PostAsync(url, messageContet);
+            var responseHttp = await _httpClient.PutAsync(url, messageContet);
             return new HttpResponseWrapper<object>(null, !responseHttp.IsSuccessStatusCode, responseHttp);
         }
 
@@ -76,7 +76,7 @@ namespace Zulu.Web.Repositories
         {
             var messageJSON = JsonSerializer.Serialize(model);
             var messageContet = new StringContent(messageJSON, Encoding.UTF8, "application/json");
-            var responseHttp = await _httpClient.PostAsync(url, messageContet);
+            var responseHttp = await _httpClient.PutAsync(url, messageContet);
           
             if (responseHttp.IsSuccessStatusCode)
             {

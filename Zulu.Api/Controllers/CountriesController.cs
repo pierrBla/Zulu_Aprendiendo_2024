@@ -24,9 +24,24 @@ namespace Zulu.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Postsync(Country country)
         {
-            _context.Add(country);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Add(country);
+                await _context.SaveChangesAsync();
                 return Ok(country);
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                if (dbUpdateException.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("Ya existe un pais con el mismo nombre");
+                }
+                return BadRequest(dbUpdateException.Message);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
         [HttpGet]
@@ -51,9 +66,25 @@ namespace Zulu.Api.Controllers
         [HttpPut]
         public async Task<ActionResult> Putsync(Country country)
         {
-            _context.Update(country);
-            await _context.SaveChangesAsync();
-            return Ok(country);
+            try
+            {
+                _context.Update(country);
+                await _context.SaveChangesAsync();
+                return Ok(country);
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                if(dbUpdateException.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("Ya existe un pais con el mismo nombre");
+                }
+                return BadRequest(dbUpdateException.Message);
+            }
+            catch(Exception exception) 
+            {
+                return BadRequest(exception.Message);
+            }
+           
         }
 
         [HttpDelete("{id:int}")]
