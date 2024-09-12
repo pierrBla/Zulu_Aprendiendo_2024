@@ -35,7 +35,7 @@ namespace Zulu.Api.Controllers
             
             return Ok(await _context.Countries.ToListAsync());
         }
-
+        
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Getsync(int id)
         {
