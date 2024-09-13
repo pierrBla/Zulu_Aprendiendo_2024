@@ -14,6 +14,10 @@ namespace Zulu.Shared.Entities
 
         public string Name { get; set; } = null!;
 
+        public ICollection<State>? States { get; set; }
+         //propieda de Lectura
+        public int  StatesNumber => States == null ? 0 : States.Count; 
+
 
     }
 }

@@ -18,7 +18,12 @@ namespace Zulu.Shared.Entities
 
 
         public string Name { get; set; } = null!;
+
+
+
         //para poner una relacion
+        public int CountryId { get; set; }
+
         public Country? Country { get; set; }
 
         public ICollection<City>? Cities { get; set; }

@@ -12,7 +12,11 @@ namespace Zulu.Shared.Entities
 
 
         public string Name { get; set; } = null!;
+
+
         //para poner una relacion
+        public int StateId { get; set; }
+
         public State? State { get; set; }
 
 
